@@ -69,32 +69,26 @@ def sell_tickets():
     Return:
         int: The total number of buyers.
     """
-    # Initialize tickets and buyer counter
+    # Initialize tickets
     remaining_tickets = 10
-    buyer_count = 0
+    tickets_sold = 0  # accumulator
 
-    # Continue until tickets are sold out
     while remaining_tickets > 0:
-        # Display how many tickets remain
         print(f"\nTickets remaining: {remaining_tickets}")
 
-        # Get a validated request from the buyer
-        tickets_sold = get_ticket_request(remaining_tickets)
+        # Get request (DO NOT overwrite accumulator)
+        tickets_requested = get_ticket_request(remaining_tickets)
 
-        # Only complete a purchase if the request is valid
-        if tickets_sold > 0:
-            # Update remaining tickets and buyer count
-            remaining_tickets -= tickets_sold
-            buyer_count += 1
+        if tickets_requested > 0:
+            remaining_tickets -= tickets_requested
+            tickets_sold += tickets_requested
 
-            # Display purchase success and updated remaining tickets
             print(f"Purchase successful. Tickets remaining: {remaining_tickets}")
 
-    # Display final results
     print("\nAll tickets have been sold.")
-    print(f"Total number of buyers: {buyer_count}")
+    print(f"Total number of tickets sold: {tickets_sold}")
 
-    return buyer_count
+    return tickets_sold
 
 
 def main():
