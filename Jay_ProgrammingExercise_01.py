@@ -29,7 +29,7 @@ def get_ticket_request(remaining_tickets):
         int: The valid ticket request amount (0 if invalid).
     """
     # Ask the buyer for the ticket quantity
-    tickets_requested = int(input("How many tickets would you like to buy (1-4)? "))
+    tickets_requested = int(input("Enter the number of tickets you want to purchase (1–4): "))
 
     # Validate the buyer is purchasing between 1 and 4 tickets
     if tickets_requested < 1 or tickets_requested > 4:
